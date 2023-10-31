@@ -1,0 +1,13 @@
+Ceníme práci na projektu! 🏆 Prohlédli jsme si kód a máme k němu následující poznámky:
+
+1. Pojmenování identifikátorů - ok
+2. Dodržení principů SRP a SoC - Třída Pojistovna spravuje jak práci s daty tak uživatelský vstup/výstup. Jedna třída by neměla zároveň modifikovat kolekci Pojistenci a k tomu řešit uživatelský vstup/výstup.
+3. Vhodný výběr datových typů - ok
+4. Formátování kódu - ok
+5. Duplicitní kód a nekonečné cykly - ok
+6. Validace vstupních dat - Validace textových vstupů je řešena, ale chybí validace věku (např. záporné či nečíselné hodnoty).
+7. Logičnost a složitost - ok
+8. Komentáře - ok
+9. Celkové hodnocení - Zadání úkolu je splněno. Kód by ovšem mohl být lépe strukturován, pokud by kód ve třídě Pojistovna byl rozdělen do dvou tříd tak, aby se jedna starala o správu dat a druhá o uživatelský vstup a výstup. Dále by kód šel vylepšit validací věku.
+
+Doporučujeme případné výtky v kódu opravit, abyste jej mohli pak prezentovat budoucímu zaměstnavateli v co nejlepší kvalitě. Pokud byste potřebovali s čímkoli pomoci, naplánujte si s námi konzultaci, rádi vám poradíme!
