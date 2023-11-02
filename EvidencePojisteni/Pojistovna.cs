@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,8 +13,14 @@ namespace EvidencePojisteni
     /// </summary>
     class Pojistovna
     {
+        /// <summary>
+        /// Kolekce záznamů pojištěných osob
+        /// </summary>
         private List<Pojistenec> pojistenci;
-
+        
+        /// <summary>
+        /// Vytvoří novou instanci kolekce záznamů pojištěných osob
+        /// </summary>
         public Pojistovna() 
         {
             pojistenci = new List<Pojistenec>();
@@ -20,72 +28,47 @@ namespace EvidencePojisteni
         /// <summary>
         /// Přidá nově pojištěnou osobu na seznam
         /// </summary>
-        public void PridejPojistence()
+        /// <param name="jmeno">Jméno pojištěnce</param>
+        /// <param name="prijmeni">Příjmení pojištěnce</param>
+        /// <param name="telefon">Telefonní číslo pojištěnce</param>
+        /// <param name="vek">Stáří pojištěnce</param>
+        public void PridejPojistence(string jmeno, string prijmeni, string telefon, int vek)
         {
-            // Uživatelský vstup
-            Console.WriteLine("Zadejte jméno pojištěného");
-            string jmeno = OsetriTextovyVstup();
-            Console.WriteLine("Zadejte příjmení pojištěného");
-            string prijmeni = OsetriTextovyVstup();
-            Console.WriteLine("Zadejte telefonní číslo");
-            string telefon = OsetriTextovyVstup();
-            Console.WriteLine("Zadejte věk");
-            int vek = int.Parse(Console.ReadLine());
-            
-            // Přidání pojištěné osoby na seznam
             pojistenci.Add(new Pojistenec(jmeno, prijmeni, telefon, vek));
-            Console.WriteLine();
-            Console.WriteLine("Data byla uložena. Pokračujte libovolnou klávesou...");
+
         }
         /// <summary>
         /// Vypíše všechny pojištěné osoby ze seznamu
         /// </summary>
-        public void VypisPojistence()
+        public List<Pojistenec>? VypisPojistence()
         {
-            foreach (Pojistenec pojistenec in pojistenci)
-            {
-                Console.WriteLine(pojistenec);
-            }
+
+            if (pojistenci.Count == 0)
+                return null;
+            else return pojistenci;
+
+
         }
         /// <summary>
         /// Vyhledá ze seznamu pojištěnou osobu podle jména a příjmení
         /// </summary>
-        public void NajdiPojistence()
+        /// <param name="jmeno">Jméno pojištěnce</param>
+        /// <param name="prijmeni">Příjmení pojištěnce</param>
+        /// <returns></returns>
+        public Pojistenec? NajdiPojistence(string jmeno, string prijmeni)
         {
-            Console.WriteLine("Zadejte jméno pojištěného:");
-            string jmeno = OsetriTextovyVstup();
-            Console.WriteLine("Zadejte příjmení:");
-            string prijmeni = OsetriTextovyVstup();
-
-            var hledanyPojistenec = pojistenci.Find(p => p.Jmeno == jmeno && p.Prijmeni == prijmeni);
-
-            Console.WriteLine(hledanyPojistenec);
-        }
-        /// <summary>
-        /// Ošetří uživatelský textový vstup
-        /// </summary>
-        /// <returns>Ošetřený text</returns>
-        public string OsetriTextovyVstup()
-        {
-            string text;
-            while (string.IsNullOrWhiteSpace(text = Console.ReadLine()))
-                Console.WriteLine("Neplatný vstup, zadej znovu:");
-
-
-            text = text.ToLower().Trim();
-            return $"{char.ToUpper(text[0])}{text[1..]}";
+            Pojistenec? hledanyPojistenec = pojistenci.Find(p => p.Jmeno == jmeno && p.Prijmeni == prijmeni);
+            if (hledanyPojistenec != null)
+                return hledanyPojistenec;
+            else
+                return null;
+           
         }
 
-        
-        /// <summary>
-        /// Úvodní obrazovka
-        /// </summary>
-        public void VypisUvodniObrazovku()
-        {
-            Console.Clear();
-            Console.WriteLine("--------------------");
-            Console.WriteLine("Evidence pojištěných");
-            Console.WriteLine("--------------------");
-        }
+
+
+
+
+
     }
 }

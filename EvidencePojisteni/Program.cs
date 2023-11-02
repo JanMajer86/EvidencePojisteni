@@ -2,13 +2,14 @@
 using System.Xml;
 
 
-// instance pojišťovny
-Pojistovna pojistovna = new Pojistovna();
+// instance uživatelského rozhraní
+UzivatelskeRozhrani ui = new UzivatelskeRozhrani();
+
 char volba = '0';
 // hlavní cyklus programu
 while (volba != '4')
 {
-    pojistovna.VypisUvodniObrazovku();
+    ui.VypisUvodniObrazovku();
     Console.WriteLine();
     Console.WriteLine("Vyberte si akci:");
     Console.WriteLine("1 - Přidat nového pojištěného");
@@ -21,13 +22,13 @@ while (volba != '4')
     switch (volba)
     {
         case '1':
-            pojistovna.PridejPojistence();
+            ui.PridejPojistence();
             break;
         case '2':
-            pojistovna.VypisPojistence();
+            ui.VypisPojistence();
             break;
         case '3':
-            pojistovna.NajdiPojistence();
+            ui.NajdiPojistence();
             break;
         case '4':
             Console.WriteLine("Libovolnou klávesou ukončíte program...");
